@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: IssueFlow
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+logging:
+  level:
+    org.springframework.boot: WARN
+    org.hibernate: WARN
+cors:
+  origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
