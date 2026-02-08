@@ -4,6 +4,9 @@ import com.issueflow.request.UserRoleRequest;
 import com.issueflow.response.ApiResponse;
 import com.issueflow.response.UserResponse;
 import com.issueflow.service.UserService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,7 +51,7 @@ public class UserController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SYSTEM_ADMIN')")
     @PatchMapping("/users/{userId}/role")
-    public ResponseEntity<ApiResponse> updateRole(@RequestBody UserRoleRequest roleRequest, @PathVariable Long userId){
+    public ResponseEntity<ApiResponse> updateRole(@RequestBody @Valid UserRoleRequest roleRequest, @PathVariable Long userId){
         userService.updateUserRole(roleRequest, userId);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Role updated successfully"));
     }

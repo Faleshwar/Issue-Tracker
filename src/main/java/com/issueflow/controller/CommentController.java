@@ -3,6 +3,9 @@ package com.issueflow.controller;
 import com.issueflow.request.CommentRequest;
 import com.issueflow.response.CommentResponse;
 import com.issueflow.service.CommentService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +23,7 @@ public class CommentController {
     }
 
     @PostMapping("/{issueId}/comments")
-    public ResponseEntity<CommentResponse> createComment(@PathVariable Long issueId, @RequestBody CommentRequest commentRequest){
+    public ResponseEntity<CommentResponse> createComment(@PathVariable Long issueId, @RequestBody @Valid CommentRequest commentRequest){
         CommentResponse comment = commentService.createComment(commentRequest, issueId);
         return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }

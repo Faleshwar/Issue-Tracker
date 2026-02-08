@@ -9,6 +9,9 @@ import com.issueflow.response.ApiResponse;
 import com.issueflow.response.IssueOverview;
 import com.issueflow.response.IssueResponse;
 import com.issueflow.service.IssueService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +33,13 @@ public class IssueController {
     }
 
     @PostMapping("/{projectId}/issues")
-    public ResponseEntity<ApiResponse> createIssue(@RequestBody IssueRequest request, @PathVariable Long projectId){
+    public ResponseEntity<ApiResponse> createIssue(@RequestBody @Valid IssueRequest request, @PathVariable Long projectId){
         issueService.createIssue(projectId, request);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("Issue created successfully"));
     }
 
     @PutMapping("/{projectId}/issues/{issueId}")
-    public ResponseEntity<ApiResponse> updateIssue(@RequestBody IssueRequest request, @PathVariable Long projectId, @PathVariable Long issueId){
+    public ResponseEntity<ApiResponse> updateIssue(@RequestBody @Valid IssueRequest request, @PathVariable Long projectId, @PathVariable Long issueId){
         issueService.updateIssue(projectId, issueId, request);
         return ResponseEntity.ok(new ApiResponse("Issue updated successfully"));
     }
@@ -84,7 +87,7 @@ public class IssueController {
     }
 
     @PatchMapping("/issues/{issueId}/status")
-    public ResponseEntity<ApiResponse> changeIssueStatus(@PathVariable Long issueId, @RequestBody IssueChangeRequest issueChangeRequest) {
+    public ResponseEntity<ApiResponse> changeIssueStatus(@PathVariable Long issueId, @RequestBody @Valid IssueChangeRequest issueChangeRequest) {
         issueService.changeIssueStatus(issueId, issueChangeRequest.getIssueStatus());
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Issue status updated successfully"));
     }

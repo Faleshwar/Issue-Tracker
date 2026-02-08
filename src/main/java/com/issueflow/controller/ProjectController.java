@@ -4,6 +4,9 @@ import com.issueflow.request.ProjectRequest;
 import com.issueflow.response.ApiResponse;
 import com.issueflow.response.ProjectResponse;
 import com.issueflow.service.ProjectService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +26,7 @@ public class ProjectController {
 
 
     @PostMapping("/projects")
-    public ResponseEntity<ApiResponse> createProject(@RequestBody ProjectRequest request){
+    public ResponseEntity<ApiResponse> createProject(@RequestBody @Valid ProjectRequest request){
         projectService.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("Project created successfully"));
     }
@@ -35,7 +38,7 @@ public class ProjectController {
     }
 
     @PutMapping("/projects/{projectId}")
-    public ResponseEntity<ApiResponse> update(@PathVariable Long projectId, @RequestBody ProjectRequest request){
+    public ResponseEntity<ApiResponse> update(@PathVariable Long projectId, @RequestBody @Valid ProjectRequest request){
         projectService.update(request, projectId);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Project updated successfully"));
     }
