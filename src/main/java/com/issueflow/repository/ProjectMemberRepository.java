@@ -1,13 +1,11 @@
 package com.issueflow.repository;
 
 import com.issueflow.modal.ProjectMember;
-import com.issueflow.modal.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
-import java.util.Set;
 
 public interface ProjectMemberRepository extends JpaRepository<ProjectMember, Long> {
 

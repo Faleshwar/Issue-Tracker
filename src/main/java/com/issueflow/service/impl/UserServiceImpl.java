@@ -1,7 +1,6 @@
 package com.issueflow.service.impl;
 
 import com.issueflow.exception.ConflictException;
-import com.issueflow.exception.InvalidRoleException;
 import com.issueflow.exception.ProjectNotFoundException;
 import com.issueflow.modal.ProjectMember;
 import com.issueflow.modal.User;

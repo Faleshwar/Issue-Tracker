@@ -6,10 +6,9 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-      show-sql: true
+  # jpa:
+  #   hibernate:
+  #     ddl-auto: update
 logging:
   level:
     org.springframework.boot: WARN

@@ -1,7 +1,5 @@
 package com.issueflow.response;
 
-import jakarta.validation.constraints.NotNull;
-
 public class AuthResponse {
 
 

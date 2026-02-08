@@ -1,8 +1,4 @@
 package com.issueflow.controller;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.issueflow.request.IssueChangeRequest;
 import com.issueflow.request.IssueRequest;
 import com.issueflow.response.ApiResponse;
@@ -11,8 +7,6 @@ import com.issueflow.response.IssueResponse;
 import com.issueflow.service.IssueService;
 
 import jakarta.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
