@@ -1,7 +1,10 @@
 package com.issueflow.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class IssueChangeRequest {
 
+    @NotBlank(message = "Issue status must not be blank")
     private String issueStatus;
 
     public IssueChangeRequest(String issueStatus) {

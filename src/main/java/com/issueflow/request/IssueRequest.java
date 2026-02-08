@@ -1,8 +1,15 @@
 package com.issueflow.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class IssueRequest {
+
+    @NotBlank(message = "Issue title must not be blank")
     private String title;
+
     private String description;
+
+    @NotBlank(message = "Issue priority must not be blank")
     private String priority;
 
     public IssueRequest(String title, String description, String priority) {

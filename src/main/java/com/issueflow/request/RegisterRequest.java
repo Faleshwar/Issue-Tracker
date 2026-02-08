@@ -1,10 +1,21 @@
 package com.issueflow.request;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class RegisterRequest {
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email address")
     private String email;
+
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Password is required")
     private String password;
+
+    
     private String userRole;
 
     public RegisterRequest() {

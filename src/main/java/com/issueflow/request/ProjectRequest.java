@@ -1,7 +1,13 @@
 package com.issueflow.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class ProjectRequest {
+
+    @NotBlank(message = "Project name must not be blank")
     private String name;
+
+    @NotBlank(message = "Project description must not be blank")
     private String description;
 
     public ProjectRequest(String name, String description) {
